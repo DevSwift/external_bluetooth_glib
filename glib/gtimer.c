@@ -140,7 +140,7 @@ g_timer_elapsed (GTimer *timer,
 		 gulong *microseconds)
 {
   gdouble total;
-  gint64 elapsed;
+  guint64 elapsed;
 
   g_return_val_if_fail (timer != NULL, 0);
 

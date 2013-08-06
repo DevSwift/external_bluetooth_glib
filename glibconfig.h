@@ -49,28 +49,28 @@ typedef unsigned int guint32;
 #define G_GUINT32_FORMAT "u"
 #define G_HAVE_GINT64 1          /* deprecated, always true */
 
-typedef signed long gint64;
-typedef unsigned long guint64;
+typedef signed long long gint64;
+typedef unsigned long long guint64;
 
-#define G_GINT64_CONSTANT(val)	(val##L)
-#define G_GUINT64_CONSTANT(val)	(val##UL)
-#define G_GINT64_MODIFIER "l"
-#define G_GINT64_FORMAT "li"
-#define G_GUINT64_FORMAT "lu"
+#define G_GINT64_CONSTANT(val)	(val##LL)
+#define G_GUINT64_CONSTANT(val)	(val##ULL)
+#define G_GINT64_MODIFIER "ll"
+#define G_GINT64_FORMAT "lli"
+#define G_GUINT64_FORMAT "llu"
 
-#define GLIB_SIZEOF_VOID_P 8
-#define GLIB_SIZEOF_LONG   8
-#define GLIB_SIZEOF_SIZE_T 8
+#define GLIB_SIZEOF_VOID_P 4
+#define GLIB_SIZEOF_LONG   4
+#define GLIB_SIZEOF_SIZE_T 4
 
-typedef signed long gssize;
-typedef unsigned long gsize;
-#define G_GSIZE_MODIFIER "l"
-#define G_GSSIZE_FORMAT "li"
-#define G_GSIZE_FORMAT "lu"
+typedef signed int gssize;
+typedef unsigned int gsize;
+#define G_GSIZE_MODIFIER ""
+#define G_GSSIZE_FORMAT "i"
+#define G_GSIZE_FORMAT "u"
 
-#define G_MAXSIZE	G_MAXULONG
-#define G_MINSSIZE	G_MINLONG
-#define G_MAXSSIZE	G_MAXLONG
+#define G_MAXSIZE	G_MAXUINT
+#define G_MINSSIZE	G_MININT
+#define G_MAXSSIZE	G_MAXINT
 
 typedef gint64 goffset;
 #define G_MINOFFSET	G_MININT64
@@ -81,14 +81,14 @@ typedef gint64 goffset;
 #define G_GOFFSET_CONSTANT(val) G_GINT64_CONSTANT(val)
 
 
-#define GPOINTER_TO_INT(p)	((gint)  (glong) (p))
-#define GPOINTER_TO_UINT(p)	((guint) (gulong) (p))
+#define GPOINTER_TO_INT(p)	((gint)   (p))
+#define GPOINTER_TO_UINT(p)	((guint)  (p))
 
-#define GINT_TO_POINTER(i)	((gpointer) (glong) (i))
-#define GUINT_TO_POINTER(u)	((gpointer) (gulong) (u))
+#define GINT_TO_POINTER(i)	((gpointer)  (i))
+#define GUINT_TO_POINTER(u)	((gpointer)  (u))
 
-typedef signed long gintptr;
-typedef unsigned long guintptr;
+typedef signed int gintptr;
+typedef unsigned int guintptr;
 
 #ifdef NeXT /* @#%@! NeXTStep */
 # define g_ATEXIT(proc)	(!atexit (proc))
@@ -193,10 +193,10 @@ union _GSystemThread
 #define GUINT64_TO_LE(val)	((guint64) (val))
 #define GINT64_TO_BE(val)	((gint64) GUINT64_SWAP_LE_BE (val))
 #define GUINT64_TO_BE(val)	(GUINT64_SWAP_LE_BE (val))
-#define GLONG_TO_LE(val)	((glong) GINT64_TO_LE (val))
-#define GULONG_TO_LE(val)	((gulong) GUINT64_TO_LE (val))
-#define GLONG_TO_BE(val)	((glong) GINT64_TO_BE (val))
-#define GULONG_TO_BE(val)	((gulong) GUINT64_TO_BE (val))
+#define GLONG_TO_LE(val)	((glong) GINT32_TO_LE (val))
+#define GULONG_TO_LE(val)	((gulong) GUINT32_TO_LE (val))
+#define GLONG_TO_BE(val)	((glong) GINT32_TO_BE (val))
+#define GULONG_TO_BE(val)	((gulong) GUINT32_TO_BE (val))
 #define GINT_TO_LE(val)		((gint) GINT32_TO_LE (val))
 #define GUINT_TO_LE(val)	((guint) GUINT32_TO_LE (val))
 #define GINT_TO_BE(val)		((gint) GINT32_TO_BE (val))
